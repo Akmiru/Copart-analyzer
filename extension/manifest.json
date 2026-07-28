@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Copart Estimator",
+  "description": "Szacuje koszty naprawy pojazdów na aukcjach copart – polskie ceny + analiza AI zdjęć",
+  "version": "1.0.0",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.copart.com/*",
+        "*://www.iaai.com/VehicleDetail/*",
+        "*://iaai.com/VehicleDetail/*"
+        
+      ],
+      "js": ["content.js"],
+      "css": ["panel.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/*",
+    "*://*.copart.com/*",
+    "https://api.nbp.pl/*"
+  ],
+  "permissions": ["activeTab", "storage"]
+}
