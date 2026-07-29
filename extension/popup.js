@@ -5,8 +5,10 @@
 
 (async () => {
   const [tab] = await chrome.tabs.query({active: true, currentWindow: true})
-    const response = await chrome.tabs.sendMessage(tab.id, {action: "get-car-data"})
-    document.querySelector("#Car_name").innerHTML = response;
+  const response = await chrome.tabs.sendMessage(tab.id, {action: "get-car-data"})
+
+  
+  document.querySelector("#Car_name").innerHTML = response;
 
 })();
 
