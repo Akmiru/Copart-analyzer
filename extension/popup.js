@@ -8,7 +8,7 @@
   const response = await chrome.tabs.sendMessage(tab.id, {action: "get-car-data"})
 
   
-  document.querySelector("#Car_name").innerHTML = response;
+  document.querySelector("#Car_name").innerHTML = response.carName;
 
 })();
 
